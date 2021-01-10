@@ -1,10 +1,10 @@
-//conexión a Base de datos
-import mongoose from 'mongoose'
-const DB_USER = "waku"
-const DB_PASSWORD = "3puq6U0tr6sqmn2J"
-const DB_NAME = "games"
-const uri = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.pqpy0.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
-console.log(uri)
-mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then(() => console.log('Base de datos iniciada'))
-    .catch(e => console.log(e))
+import mongoose from "mongoose";
+
+
+const mongoUrl: string = `${process.env.MONGODB_URI}`
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true } ).then(
+    () => { console.log(`Conectado a la base de datos`) },
+).catch(err => {
+    console.log(`MongoDB connection error. Please make sure MongoDB is running. ${err}`);
+    // process.exit();
+});
