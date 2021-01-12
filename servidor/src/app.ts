@@ -4,40 +4,37 @@ import session from 'express-session'
 import authRoutes from "./routes/auth";
 import gamesRoutes from "./routes/games";
 import  "./config/passport";
-
-//Connect to MongoDB
 import "./database"
-
+import * as dotenv from "dotenv";
 //Settings 
-const app: Application = express();
-app.set('port', 3000)
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(session({
-    secret:process.env.SESSION_SECRET as string,
+export const createApp = () => {
+
+  const app: express.Application = express();
+
+  app.set('port', 4000)
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(session({
+    secret: process.env.SESSION_SECRET as string,
     resave: true,
     saveUninitialized: true,
-}))
+  }))
 
 
-//routes
-app.use('/games',gamesRoutes)
+  //routes
+  app.use('/games', gamesRoutes)
+  app.use('/auth', authRoutes)
+  // facbook auth
 
-// facbook auth
 
-app.get('/auth/facebook', passport.authenticate('facebook',{scope:'email'}))
-app.get("/auth/facebook/callback", passport.authenticate("facebook", {
-    successRedirect:'/games',
-    failureRedirect:'/failed'
-}))
-app.get('/failed',(req, res: any) => {
-    res.sed('no valid user')
-})
-passport.serializeUser(function(user, done) {
+  passport.serializeUser((user, done) => {
     done(null, user);
   });
-  
-  passport.deserializeUser(function(user: any, done) {
+
+  passport.deserializeUser((user: any, done) => {
     done(null, user);
   });
-export default app;
+  return app
+}
+
+export default createApp;

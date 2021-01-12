@@ -1,4 +1,8 @@
-import app from './app';
+import createApp from './app';
+import { loadDB } from './controllers/games.controller';
 
-app.listen(3000);
-console.log('Server on port 3000')
+const app = createApp();
+app.listen(app.get('port'), () => {
+    console.log('Server on port', app.get('port'));
+    loadDB()
+  }); 
