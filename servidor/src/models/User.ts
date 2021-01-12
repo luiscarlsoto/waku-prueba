@@ -15,4 +15,4 @@ const userSchema = new mongoose.Schema({
     pic: {type:String, required: true},
 })
 
-export const User = mongoose.model<UserInterface>("User", userSchema);
+export const User = mongoose.model<UserInterface>("users", userSchema);

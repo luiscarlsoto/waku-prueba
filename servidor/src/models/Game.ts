@@ -1,22 +1,18 @@
-import {Schema, model} from 'mongoose';
+import mongoose from 'mongoose';
 
-const gameSchema = new Schema({
-    title: {
-        type: String,
-        required: true,
-    },
-    imageURL:{
-        type: String,
-        required: true,
-    },
-    steamID:{
-        type: Number,
-        required: true,
-    },
-    cheapest:{
-        type: Number,
-        require: true,
-    }
+export type GameInterface = mongoose.Document &{
+    steamAppID: string;
+    title: string;
+    price: number;
+    image: string;
+    url: string;
+}
+
+const gameSchema = new mongoose.Schema({
+    steamAppID: {type: String, required: true},
+    external:  {type: String, required: true},
+    cheapest:  {type: Number, required: true},
+    thumb:  {type: String, required: true},
 })
 
-export default model('Game', gameSchema);
+export const Game = mongoose.model<GameInterface>("games", gameSchema);
