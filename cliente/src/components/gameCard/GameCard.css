@@ -1,0 +1,87 @@
+.card{
+    /* font-family: 'Lato', sans-serif; */
+    margin: 20px 30px;
+    width: 346px;
+    height: 208px;
+    /* background-attachment: fixed;
+    background: rgb(143,143,143);
+    background: -moz-linear-gradient(0deg, rgba(143,143,143,0) 0%, rgba(0,0,0,1) 48%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(143,143,143,0) 0%, rgba(0,0,0,1) 48%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(0deg, rgba(143,143,143,0) 0%, rgba(0,0,0,1) 48%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#8f8f8f",endColorstr="#000000",GradientType=1); */
+    border-radius: 15px;
+    overflow: hidden;
+    background-size:cover;
+    background-position: center;
+}
+.card:hover{
+
+    cursor: pointer;
+}
+.card a{
+    text-decoration: none;
+}
+.card-header{
+    height: 70%;
+
+}
+.card-body{
+    height: 30%;
+    opacity:0;
+    transition:visibility 0.3s linear,opacity 0.2s linear;
+    display: flex;
+}
+.card:hover > .card-body{
+    color: rgb(255, 255, 255);
+    opacity: 1;
+    background-color: #000000d3;
+    visibility: visible;
+}
+
+
+.card-title{
+    margin-left: 20px;
+    padding-top: 6px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    flex: 4;
+    margin-right: 21px;
+}
+
+.card-price{
+    place-self: flex-end;
+    flex: 1;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+.card-saving{
+    margin-bottom: 14px;
+    flex: 2 1;
+    align-self: flex-end;
+    font-weight: bold;
+    text-align: center;
+}
+.card-saving span{
+    border: 1px solid green;
+    background: green;
+    border-radius: 2px;
+    padding: 4px;
+}
+.card-prices {
+    display: flex;
+    flex-direction: column;
+}
+.card-old-price {
+    text-decoration: line-through;
+    font-size: 11px;
+    margin-top: 20px;
+    text-align: center;
+    color: rgba(245, 245, 245, 0.808);
+}
+.card-prices div {
+    flex: 1;
+    margin-right: 5px;
+}
