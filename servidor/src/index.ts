@@ -1,5 +1,5 @@
-import createApp from './app';
 import { loadDB } from './controllers/games.controller';
+import createApp from './app';
 
 const app = createApp();
 app.listen(app.get('port'), () => {

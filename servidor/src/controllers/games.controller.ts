@@ -15,8 +15,8 @@ export const deals = async() => {
 
 
 export const loadDB = async () => {
-    const games = await axios.get < GameInterface[] > ('https://www.cheapshark.com/api/1.0/games?title=a&limit=20&exact=0')
-    const deals = await axios.get < DealsInterface[] > ('https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15')
+    const games = await axios.get < GameInterface[] > (`${process.env.API_URL_GAMES}`)
+    const deals = await axios.get < DealsInterface[] > (`${process.env.API_URL_DEALS}`)
     for (const value of games.data.filter( e =>  e.steamAppID !== null)) {
         Game.findOneAndUpdate({
             steamAppID: value.steamAppID

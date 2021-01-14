@@ -1,3 +1,6 @@
 /node_modules
 /dist
 .vscode
+.env
+nodemon.json
+package-lock.json

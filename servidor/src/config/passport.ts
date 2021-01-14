@@ -6,8 +6,8 @@ const FacebookStrategy: any = passportFacebook.Strategy;
 
 
 passport.use(new FacebookStrategy({
-    clientID: "706006633451783",
-    clientSecret: "855b614c6fbdd20614b48c0b1bc576cd",
+    clientID: `${process.env.FACEBOOK_ID}`,
+    clientSecret: `${process.env.FACEBOOK_SECRET}`,
     callbackURL: "/auth/facebook/callback",
     profileFields: ["id", "displayName", "picture.Type(small)", "email"],
 }, (token: string, refreshToken: string, profile: UserInterface, done: any) => {

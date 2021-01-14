@@ -5,17 +5,23 @@ import authRoutes from "./routes/auth";
 import gamesRoutes from "./routes/games";
 import  "./config/passport";
 import "./database"
-import * as dotenv from "dotenv";
+import cors from "cors";
+
+
+
 //Settings 
 export const createApp = () => {
-
   const app: express.Application = express();
+
+
+  //use cors middleware
+  app.use(cors());
 
   app.set('port', 4000)
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(session({
-    secret: process.env.SESSION_SECRET as string,
+    secret: `${process.env.SESSION_SECRET}`,
     resave: true,
     saveUninitialized: true,
   }))
