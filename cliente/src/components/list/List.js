@@ -5,6 +5,7 @@ import './List.css'
 import { getGames, getDeals } from '../../services/games'
 import {Loading} from '../../assets/spinner'
 const List = () => {
+  const steamURL = process.env.REACT_APP_URL_STEAM || "https://store.steampowered.com/app"
   const location = useLocation()
   const listGames = location.pathname.includes('games')
   const [loading, setLoading] = useState(true)
@@ -13,7 +14,6 @@ const List = () => {
 
 
     const getData = async () =>{
-      const steamURL = process.env.REACT_APP_URL_STEAM || "https://store.steampowered.com/app"
       try{
         setLoading(true)
         let response;
