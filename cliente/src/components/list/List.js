@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Drawer from '@material-ui/core/Drawer'
 import {GameCard} from '../gameCard/GameCard'
 import { useLocation } from 'react-router'
 import './List.css'
@@ -14,6 +13,7 @@ const List = () => {
 
 
     const getData = async () =>{
+      const steamURL = process.env.REACT_APP_URL_STEAM || "https://store.steampowered.com/app"
       try{
         setLoading(true)
         let response;
@@ -86,11 +86,11 @@ const List = () => {
              {loading && <Loading/> }
                 {!search.length & data ==! undefined ?
                   data.map((item) => (
-                    <GameCard {...item} listGames={listGames} url={`${process.env.REACT_APP_URL_STEAM}/${item.steamAppID}`}
+                    <GameCard {...item} listGames={listGames} url={`${steamURL}/${item.steamAppID}`}
                     picture={`https://steamcdn-a.akamaihd.net/steam/apps/${item.steamAppID}/header.jpg`}/>
                     )): 
                       data.filter(e => e.external?.toLowerCase().includes(search) || e.title?.includes(search)).map((item) => (
-                      <GameCard {...item} listGames={listGames} url={`${process.env.REACT_APP_URL_STEAM}/${item.steamAppID}`}
+                      <GameCard {...item} listGames={listGames} url={`${steamURL}/${item.steamAppID}`}
                       picture={`https://steamcdn-a.akamaihd.net/steam/apps/${item.steamAppID}/header.jpg`}/>
                       ))
                   }

@@ -4,5 +4,4 @@
 .eslintcache
 debug.log
 .env
-nodemon.json
 package-lock.json

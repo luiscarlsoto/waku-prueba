@@ -1,0 +1,22 @@
+{
+  "restartable": "rs",
+  "ignore": ["*/.test.ts", "*/.spec.ts", ".git", "node_modules", ".vscode"],
+  "execMap": {
+    "ts": "node --require ts-node/register"
+  },
+  "verbose": true,
+  "watch": ["src"],
+  "ext": "ts",
+  "env": {
+    "FACEBOOK_ID":"706006633451783",
+    "FACEBOOK_SECRET":"855b614c6fbdd20614b48c0b1bc576cd",
+    "MONGODB_URI": "mongodb+srv://waku:Y5Z3upddy87qCfCB@cluster0.pqpy0.mongodb.net/games?retryWrites=true&w=majority",
+    "SESSION_SECRET": "sessionsecret",
+    "LOCAL_URL":"http://localhost:4000",
+    "CLIENT_URL":"http://localhost:3000",
+    "JWT_SECRET":"my-32-character-ultra-secure-and-ultra-long-secret",
+    "API_URL_GAMES":"https://www.cheapshark.com/api/1.0/games?title=l&limit=60&exact=0",
+    "API_URL_DEALS":"https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15"
+  }
+  
+}

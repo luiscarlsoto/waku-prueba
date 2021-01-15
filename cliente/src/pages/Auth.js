@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 
 export const Auth = (props) => {
     const  history = useHistory()
-
+    const server = process.env.REACT_APP_URL_SERVER || 'http://localhost:4000';
     const query = new URLSearchParams(props.location.search)
     useEffect(() => {
         if(query.has('token')) {
@@ -19,7 +19,7 @@ export const Auth = (props) => {
             <img alt="logoSteam" src={logo}></img>
             <h2 className="title">Sign in</h2>
             <div>
-                <a href={`${process.env.REACT_APP_URL_SERVER}/auth/facebook`} className="btn-fb">Sign in with facebook</a>
+                <a href={`${server}/auth/facebook`} className="btn-fb">Sign in with facebook</a>
             </div>
         </div>
     ) 

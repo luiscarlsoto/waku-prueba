@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import { useLocation } from 'react-router'
 import {getUser} from '../../services/auth'
-import logoutIcon from '../../assets/sign-out-alt-solid.svg'
 import './Navbar.css'
+
+
 const Navbar = () => {
     const [user, setUser] = useState("")
     const getUserd = async () =>{
