@@ -1,8 +1,21 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React, {useEffect, useState} from 'react'
+import {Link, useHistory} from 'react-router-dom'
 import { useLocation } from 'react-router'
+import {getUser} from '../../services/auth'
+import logoutIcon from '../../assets/sign-out-alt-solid.svg'
 import './Navbar.css'
 const Navbar = () => {
+    const [user, setUser] = useState("")
+    const getUserd = async () =>{
+       const response = await getUser()
+       console.log() 
+       setUser(response)
+    }
+    useEffect(() => {
+        getUserd()
+    }, [])
+
+    const history = useHistory()
     const location = useLocation();
     const active = location.pathname.includes('games') ? true : false
     return (
@@ -12,10 +25,12 @@ const Navbar = () => {
                 <div><Link style={{color: !active ? "rgb(204, 40, 219)" : "rgb(177, 175, 175)"}} to="/deals">Deals</Link></div>
             </div>
             <div className="navBar-profile">
-                <div className="profile-name">Luis Carlos Soto</div>
-                <div className="profile-img" style={{backgroundImage:"url(https://www.w3schools.com/w3css/img_avatar3.png)"}}>
-                    <span> ✘ </span>
+                <div className="profile-name">{user.displayName}</div>
+                <div>
+                <div className="profile-img" style={{backgroundImage:`url(${user.photos})`}}>
                 </div>
+                </div>
+                <span className="icon icon-logout" onClick={e => {localStorage.clear(); history.push('/auth')} }/>
             </div>
         </div>
 

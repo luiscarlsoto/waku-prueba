@@ -4,18 +4,31 @@ import {GameCard} from '../gameCard/GameCard'
 import { useLocation } from 'react-router'
 import './List.css'
 import { getGames, getDeals } from '../../services/games'
+import {Loading} from '../../assets/spinner'
 const List = () => {
   const location = useLocation()
   const listGames = location.pathname.includes('games')
+  const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState("");
     const [data, setData] = useState([{}]);
+
+
     const getData = async () =>{
-      let response;
-      if(listGames) response =  await getGames()
-      else response = await getDeals()
-      setData(response.filter(e => !!e.steamAppID))
+      try{
+        setLoading(true)
+        let response;
+        if(listGames) response =  await getGames()
+        else response = await getDeals()
+        setData(response.filter(e => !!e.steamAppID))
+      } catch(error) {
+        console.error(error)
+      }
+        finally{
+          setLoading(false);
+        }
     }    
     useEffect(() => {
+      
       getData()
       }, []);
 
@@ -70,8 +83,8 @@ const List = () => {
             </select>
           </div> 
             <div className="container">
-              
-                {!search.length ?
+             {loading && <Loading/> }
+                {!search.length & data ==! undefined ?
                   data.map((item) => (
                     <GameCard {...item} listGames={listGames} url={`${process.env.REACT_APP_URL_STEAM}/${item.steamAppID}`}
                     picture={`https://steamcdn-a.akamaihd.net/steam/apps/${item.steamAppID}/header.jpg`}/>

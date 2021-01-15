@@ -13,6 +13,8 @@
     overflow: hidden;
     background-size:cover;
     background-position: center;
+    -webkit-box-shadow: 10px 10px 15px 5px rgba(0,0,0,0.4);
+    box-shadow: 12px 11px 16px 5px rgba(0,0,0,0.4);
 }
 .card:hover{
 
