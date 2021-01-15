@@ -1,6 +1,8 @@
 /node_modules
 /dist
 .vscode
+.eslintcache
+debug.log
 .env
 nodemon.json
 package-lock.json

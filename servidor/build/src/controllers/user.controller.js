@@ -9,18 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express");
-const passport_1 = require("passport");
-const router = express_1.Router();
-const games_controller_1 = require("../controllers/games.controller");
-router.get('/list', passport_1.authenticate('jwt'), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const data = yield games_controller_1.list();
-    //console.log(data)
-    res.json({ status: 200, data });
-}));
-router.get('/deals', passport_1.authenticate('jwt'), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const data = yield games_controller_1.deals();
-    //console.log(data)
-    res.json({ status: 200, data });
-}));
-exports.default = router;
+exports.getUser = void 0;
+const User_1 = require("../models/User");
+const getUser = (uid) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('from getUser', uid);
+    const res = yield User_1.User.find({ uid });
+    console.log('from controller :', res);
+    return res;
+});
+exports.getUser = getUser;
