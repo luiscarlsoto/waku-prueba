@@ -5,6 +5,7 @@
 ## clone or download
 ```terminal
 $ git clone https://github.com/luiscarlsoto/waku-prueba
+$ cd waku-prueba //root
 ```
 
 # Usage (run fullstack app on your machine)
