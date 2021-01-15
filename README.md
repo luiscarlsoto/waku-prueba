@@ -4,7 +4,7 @@
 
 ## clone or download
 ```terminal
-$ git clone https://github.com/amazingandyyy/mern.git
+$ git clone https://github.com/luiscarlsoto/waku-prueba
 ```
 
 # Usage (run fullstack app on your machine)
